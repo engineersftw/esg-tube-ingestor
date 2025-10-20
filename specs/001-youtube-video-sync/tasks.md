@@ -16,13 +16,13 @@
 
 **Purpose**: Project initialization and basic Go project structure
 
-- [ ] T001 Initialize Go module with `go mod init github.com/engineersftw/youtube-sync`
-- [ ] T002 Create directory structure: cmd/youtube-sync/, internal/, pkg/config/, tests/
-- [ ] T003 [P] Install core dependencies: cobra, viper, zap, lib/pq, google.golang.org/api/youtube/v3
-- [ ] T004 [P] Install development dependencies: testify, dockertest for tests
-- [ ] T005 [P] Create .env.example with YOUTUBE_API_KEY and database config examples
-- [ ] T006 [P] Create README.md with setup instructions and quickstart guide
-- [ ] T007 [P] Create .gitignore for Go projects (bin/, .env, go.sum variations)
+- [X] T001 Initialize Go module with `go mod init github.com/engineersftw/youtube-sync`
+- [X] T002 Create directory structure: cmd/youtube-sync/, internal/, pkg/config/, tests/
+- [X] T003 [P] Install core dependencies: cobra, viper, zap, lib/pq, google.golang.org/api/youtube/v3
+- [X] T004 [P] Install development dependencies: testify, dockertest for tests
+- [X] T005 [P] Create .env.example with YOUTUBE_API_KEY and database config examples
+- [X] T006 [P] Create README.md with setup instructions and quickstart guide
+- [X] T007 [P] Create .gitignore for Go projects (bin/, .env, go.sum variations)
 
 ---
 
@@ -32,10 +32,10 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T008 Write test for configuration loading in tests/unit/config/config_test.go (MUST FAIL)
-- [ ] T009 Implement configuration management in pkg/config/config.go (viper-based, env vars + file)
-- [ ] T010 Write test for database connection in tests/integration/database_test.go (MUST FAIL)
-- [ ] T011 Implement database client with connection pooling in internal/database/client.go
+- [X] T008 Write test for configuration loading in tests/unit/config/config_test.go (MUST FAIL)
+- [X] T009 Implement configuration management in pkg/config/config.go (viper-based, env vars + file)
+- [X] T010 Write test for database connection in tests/integration/database_test.go (MUST FAIL)
+- [X] T011 Implement database client with connection pooling in internal/database/client.go
 - [ ] T012 [P] Write contract test for episodes table schema in tests/contract/schema_test.go (MUST FAIL)
 - [ ] T013 [P] Implement episodes table operations (upsert) in internal/database/episodes.go
 - [ ] T014 Write test for structured logger in tests/unit/logger/logger_test.go (MUST FAIL)
