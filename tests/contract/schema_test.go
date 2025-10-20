@@ -8,6 +8,7 @@ import (
 
 	"github.com/engineersftw/youtube-sync/internal/database"
 	"github.com/engineersftw/youtube-sync/pkg/config"
+	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -166,6 +167,8 @@ func TestEpisodesTableUniqueConstraint(t *testing.T) {
 // Helper functions
 
 func setupTestDatabase(t *testing.T) *database.Client {
+	godotenv.Load("../../.env.test")
+
 	host := os.Getenv("POSTGRES_HOST")
 	if host == "" {
 		host = "localhost"

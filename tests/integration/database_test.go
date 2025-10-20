@@ -8,6 +8,7 @@ import (
 
 	"github.com/engineersftw/youtube-sync/internal/database"
 	"github.com/engineersftw/youtube-sync/pkg/config"
+	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -18,6 +19,8 @@ func TestDatabaseConnection(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping integration test in short mode")
 	}
+
+	godotenv.Load("../../.env.test")
 
 	// Check if database connection info is available
 	host := os.Getenv("POSTGRES_HOST")
@@ -36,6 +39,8 @@ func TestDatabaseConnection(t *testing.T) {
 			MaxConnections: 10,
 		},
 	}
+
+	t.Logf("Using database host: %s", cfg.Database.Host)
 
 	// Attempt to create database client
 	client, err := database.NewClient(context.Background(), cfg)
