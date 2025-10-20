@@ -36,15 +36,15 @@
 - [X] T009 Implement configuration management in pkg/config/config.go (viper-based, env vars + file)
 - [X] T010 Write test for database connection in tests/integration/database_test.go (MUST FAIL)
 - [X] T011 Implement database client with connection pooling in internal/database/client.go
-- [ ] T012 [P] Write contract test for episodes table schema in tests/contract/schema_test.go (MUST FAIL)
-- [ ] T013 [P] Implement episodes table operations (upsert) in internal/database/episodes.go
-- [ ] T014 Write test for structured logger in tests/unit/logger/logger_test.go (MUST FAIL)
-- [ ] T015 Implement structured logging (zap) with correlation IDs in internal/logger/logger.go
-- [ ] T016 Write test for YouTube API client initialization in tests/unit/youtube/client_test.go (MUST FAIL)
-- [ ] T017 Implement YouTube API client wrapper with rate limiting in internal/youtube/client.go
-- [ ] T018 Write test for exponential backoff retry logic in tests/unit/youtube/client_test.go (MUST FAIL)
-- [ ] T019 Implement retry logic with backoff in internal/youtube/client.go
-- [ ] T020 Create main CLI entry point skeleton in cmd/youtube-sync/main.go (cobra root command)
+- [X] T012 [P] Write contract test for episodes table schema in tests/contract/schema_test.go (MUST FAIL)
+- [X] T013 [P] Implement episodes table operations (upsert) in internal/database/episodes.go
+- [X] T014 Write test for structured logger in tests/unit/logger/logger_test.go (MUST FAIL)
+- [X] T015 Implement structured logging (zap) with correlation IDs in internal/logger/logger.go
+- [X] T016 Write test for YouTube API client initialization in tests/unit/youtube/client_test.go (MUST FAIL)
+- [X] T017 Implement YouTube API client wrapper with rate limiting in internal/youtube/client.go
+- [X] T018 Write test for exponential backoff retry logic in tests/unit/youtube/client_test.go (MUST FAIL)
+- [X] T019 Implement retry logic with backoff in internal/youtube/client.go
+- [X] T020 Create main CLI entry point skeleton in cmd/youtube-sync/main.go (cobra root command)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

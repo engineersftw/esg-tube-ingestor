@@ -1,0 +1,65 @@
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+bin/
+dist/
+build/
+youtube-sync
+
+# Test files
+tests/
+*.test
+coverage/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
+*.cache
+
+# Dependencies
+vendor/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# SpecKit files (not needed in container)
+.specify/
+specs/
+.claude/
+CLAUDE.md
+
+# Docker files (avoid recursion)
+Dockerfile*
+docker-compose*.yml
+.dockerignore

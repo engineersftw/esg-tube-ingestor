@@ -1,0 +1,29 @@
+version: '3.8'
+
+# Development-specific overrides for docker-compose.yml
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  postgres:
+    # Development-specific settings
+    environment:
+      # Enable verbose logging for development
+      POSTGRES_LOG_STATEMENT: all
+      POSTGRES_LOG_DURATION: "on"
+    # Mount the database backup for restoration
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Uncomment to restore from backup on first run
+      # - ./docs/db_cluster-06-06-2025@08-19-26.backup:/docker-entrypoint-initdb.d/backup.sql
+    command:
+      - "postgres"
+      - "-c"
+      - "log_statement=all"
+      - "-c"
+      - "log_duration=on"
+      - "-c"
+      - "max_connections=200"
+
+  # Auto-start pgAdmin in dev mode
+  pgadmin:
+    profiles: []  # Remove 'tools' profile to auto-start

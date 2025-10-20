@@ -18,7 +18,27 @@ A command-line tool to sync YouTube video metadata to PostgreSQL database. Suppo
 
 - Go 1.21 or higher
 - PostgreSQL database with existing schema
+  - **Easy option**: Use Docker Compose (see below)
+  - **Manual option**: Install PostgreSQL locally
 - YouTube Data API key ([Get one here](https://console.developers.google.com/))
+
+### Quick Start with Docker (Recommended)
+
+The easiest way to get started is using Docker Compose for the database:
+
+```bash
+# Start PostgreSQL database
+docker-compose up -d
+
+# Verify database is running
+docker-compose ps
+
+# The database is now available at localhost:5432
+# Default credentials: postgres/postgres
+# Database name: esg_tube
+```
+
+See [docs/local-development.md](docs/local-development.md) for detailed Docker setup, schema initialization, and troubleshooting.
 
 ### Installation
 
@@ -163,17 +183,65 @@ This tool syncs to an existing PostgreSQL schema with the following tables:
 
 ## Development
 
+### Using the Makefile
+
+A Makefile is provided for common development tasks:
+
+```bash
+# See all available commands
+make help
+
+# Start database and build in one command
+make dev
+
+# Build the binary
+make build
+
+# Run all tests
+make test
+
+# Run unit tests only
+make test-unit
+
+# Run with coverage report
+make test-coverage
+
+# Start database
+make db-up
+
+# View database logs
+make db-logs
+
+# Connect to database shell
+make db-shell
+
+# Stop database
+make db-down
+
+# Format code
+make fmt
+
+# Run linters
+make lint
+```
+
 ### Running Tests
 
 ```bash
 # Run all tests
-go test ./...
+make test
+# or: go test ./...
 
 # Run tests with coverage
-go test ./... -cover
+make test-coverage
+# or: go test ./... -cover
+
+# Run unit tests only
+make test-unit
 
 # Run integration tests (requires PostgreSQL)
-go test ./tests/integration/... -v
+make test-integration
+# or: go test ./tests/integration/... -v
 
 # Run contract tests
 go test ./tests/contract/... -v
