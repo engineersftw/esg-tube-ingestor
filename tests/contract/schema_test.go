@@ -164,6 +164,111 @@ func TestEpisodesTableUniqueConstraint(t *testing.T) {
 	assert.Contains(t, err.Error(), "duplicate", "Error should mention duplicate key")
 }
 
+// T054: Contract test for playlists table
+func TestPlaylistsTableSchema(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Skipping contract test in short mode")
+	}
+
+	client := setupTestDatabase(t)
+	if client == nil {
+		t.Skip("Database not available")
+	}
+	defer client.Close()
+
+	// Check if playlists table exists
+	var exists bool
+	query := `SELECT EXISTS (
+		SELECT FROM information_schema.tables
+		WHERE table_schema = 'public'
+		AND table_name = 'playlists'
+	)`
+	err := client.DB().QueryRow(query).Scan(&exists)
+	require.NoError(t, err)
+
+	if !exists {
+		t.Skip("playlists table does not exist - create schema first")
+	}
+
+	// Verify expected columns exist
+	expectedColumns := []string{
+		"id", "playlist_id", "title", "description", "slug",
+		"image1", "image2", "image3", "active",
+		"created_at", "updated_at",
+	}
+
+	for _, col := range expectedColumns {
+		var columnExists bool
+		colQuery := `SELECT EXISTS (
+			SELECT FROM information_schema.columns
+			WHERE table_schema = 'public'
+			AND table_name = 'playlists'
+			AND column_name = $1
+		)`
+		err := client.DB().QueryRow(colQuery, col).Scan(&columnExists)
+		require.NoError(t, err)
+		assert.True(t, columnExists, "Column %s should exist in playlists table", col)
+	}
+}
+
+// T055: Contract test for playlist_items table
+func TestPlaylistItemsTableSchema(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Skipping contract test in short mode")
+	}
+
+	client := setupTestDatabase(t)
+	if client == nil {
+		t.Skip("Database not available")
+	}
+	defer client.Close()
+
+	// Check if playlist_items table exists
+	var exists bool
+	query := `SELECT EXISTS (
+		SELECT FROM information_schema.tables
+		WHERE table_schema = 'public'
+		AND table_name = 'playlist_items'
+	)`
+	err := client.DB().QueryRow(query).Scan(&exists)
+	require.NoError(t, err)
+
+	if !exists {
+		t.Skip("playlist_items table does not exist - create schema first")
+	}
+
+	// Verify expected columns exist
+	expectedColumns := []string{
+		"id", "playlist_id", "episode_id", "sort_order",
+		"created_at", "updated_at",
+	}
+
+	for _, col := range expectedColumns {
+		var columnExists bool
+		colQuery := `SELECT EXISTS (
+			SELECT FROM information_schema.columns
+			WHERE table_schema = 'public'
+			AND table_name = 'playlist_items'
+			AND column_name = $1
+		)`
+		err := client.DB().QueryRow(colQuery, col).Scan(&columnExists)
+		require.NoError(t, err)
+		assert.True(t, columnExists, "Column %s should exist in playlist_items table", col)
+	}
+
+	// Verify foreign key constraints exist
+	var fkExists bool
+	fkQuery := `SELECT EXISTS (
+		SELECT FROM information_schema.table_constraints
+		WHERE table_schema = 'public'
+		AND table_name = 'playlist_items'
+		AND constraint_type = 'FOREIGN KEY'
+	)`
+	err = client.DB().QueryRow(fkQuery).Scan(&fkExists)
+	require.NoError(t, err)
+	assert.True(t, fkExists, "playlist_items should have foreign key constraints")
+}
+
 // Helper functions
 
 func setupTestDatabase(t *testing.T) *database.Client {

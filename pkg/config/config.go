@@ -2,8 +2,11 @@ package config
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 
+	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 )
 
@@ -54,6 +57,9 @@ type RetryConfig struct {
 // Load loads configuration from file and environment variables
 // Environment variables take precedence over config file values
 func Load(configPath string) (*Config, error) {
+	// Try to load .env file from current directory or parent directories
+	loadEnvFile()
+
 	v := viper.New()
 
 	// Set default values
@@ -153,4 +159,32 @@ func (c *Config) GetDSN() string {
 		c.Database.Database,
 		c.Database.SSLMode,
 	)
+}
+
+// loadEnvFile attempts to load .env file from current directory or parent directories
+func loadEnvFile() {
+	// Try to find .env file in current directory or up to 3 parent directories
+	currentDir, err := os.Getwd()
+	if err != nil {
+		return // Silently ignore error, environment variables may still be set
+	}
+
+	// Try current directory first
+	envPath := filepath.Join(currentDir, ".env")
+	if _, err := os.Stat(envPath); err == nil {
+		_ = godotenv.Load(envPath)
+		return
+	}
+
+	// Try parent directories
+	for i := 0; i < 3; i++ {
+		currentDir = filepath.Dir(currentDir)
+		envPath = filepath.Join(currentDir, ".env")
+		if _, err := os.Stat(envPath); err == nil {
+			_ = godotenv.Load(envPath)
+			return
+		}
+	}
+
+	// If no .env file found, that's okay - environment variables may be set directly
 }

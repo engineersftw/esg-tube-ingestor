@@ -59,6 +59,8 @@ go install cmd/youtube-sync/main.go
 
 ### Configuration
 
+The CLI automatically loads configuration from `.env` files in the current directory or parent directories.
+
 1. Copy the example environment file:
    ```bash
    cp .env.example .env
@@ -70,7 +72,9 @@ go install cmd/youtube-sync/main.go
    POSTGRES_PASSWORD=your-db-password
    ```
 
-3. Or create a config file at `~/.youtube-sync/config.yaml`:
+   **Note**: The `.env` file is automatically loaded when you run any command. No additional flags needed!
+
+3. Alternative: Create a config file at `~/.youtube-sync/config.yaml` and use `--config` flag:
    ```yaml
    youtube:
      api_key: your-api-key-here

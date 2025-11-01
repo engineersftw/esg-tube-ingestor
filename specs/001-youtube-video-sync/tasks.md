@@ -60,24 +60,24 @@
 
 **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T021 [P] [US1] Write unit test for YouTube video ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
-- [ ] T022 [P] [US1] Write unit test for YouTube URL validation in tests/unit/parser/youtube_url_test.go (MUST FAIL)
-- [ ] T023 [P] [US1] Write unit test for video metadata fetching in tests/unit/youtube/video_test.go (MUST FAIL with mocked API)
-- [ ] T024 [P] [US1] Write unit test for video metadata mapping to episodes table in tests/unit/sync/video_sync_test.go (MUST FAIL)
-- [ ] T025 [US1] Write integration test for end-to-end video sync in tests/integration/video_sync_test.go (MUST FAIL)
+- [X] T021 [P] [US1] Write unit test for YouTube video ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
+- [X] T022 [P] [US1] Write unit test for YouTube URL validation in tests/unit/parser/youtube_url_test.go (MUST FAIL)
+- [X] T023 [P] [US1] Write unit test for video metadata fetching in tests/unit/youtube/video_test.go (MUST FAIL with mocked API)
+- [X] T024 [P] [US1] Write unit test for video metadata mapping to episodes table in tests/unit/sync/video_sync_test.go (MUST FAIL)
+- [X] T025 [US1] Write integration test for end-to-end video sync in tests/integration/video_sync_test.go (MUST FAIL)
 
 ### Implementation for User Story 1
 
-- [ ] T026 [P] [US1] Implement YouTube URL parser (extract video ID from various URL formats) in internal/parser/youtube_url.go
-- [ ] T027 [P] [US1] Implement URL validator (validate format, handle malformed URLs) in internal/parser/validator.go
-- [ ] T028 [US1] Implement video metadata fetcher (YouTube API videos.list) in internal/youtube/video.go
-- [ ] T029 [US1] Implement video sync logic (fetch + map + upsert to episodes) in internal/sync/video_sync.go
-- [ ] T030 [US1] Implement "video" CLI command with cobra in cmd/youtube-sync/main.go
-- [ ] T031 [US1] Add --force, --dry-run, --json, --verbose flags to video command
-- [ ] T032 [US1] Add error handling for invalid video IDs (FR-009) in internal/sync/video_sync.go
-- [ ] T033 [US1] Add error handling for unavailable videos (404/403) mark as active=false (FR-013)
-- [ ] T034 [US1] Add structured logging for video sync operations with correlation IDs
-- [ ] T035 [US1] Add success/error output formatting (human-readable + JSON modes)
+- [X] T026 [P] [US1] Implement YouTube URL parser (extract video ID from various URL formats) in internal/parser/youtube_url.go
+- [X] T027 [P] [US1] Implement URL validator (validate format, handle malformed URLs) in internal/parser/validator.go
+- [X] T028 [US1] Implement video metadata fetcher (YouTube API videos.list) in internal/youtube/video.go
+- [X] T029 [US1] Implement video sync logic (fetch + map + upsert to episodes) in internal/sync/video_sync.go
+- [X] T030 [US1] Implement "video" CLI command with cobra in cmd/youtube-sync/main.go
+- [X] T031 [US1] Add --force, --dry-run, --json, --verbose flags to video command
+- [X] T032 [US1] Add error handling for invalid video IDs (FR-009) in internal/sync/video_sync.go
+- [X] T033 [US1] Add error handling for unavailable videos (404/403) mark as active=false (FR-013)
+- [X] T034 [US1] Add structured logging for video sync operations with correlation IDs
+- [X] T035 [US1] Add success/error output formatting (human-readable + JSON modes)
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 **Manual Test**: Follow quickstart.md Test Case 1.1-1.6 to validate single video sync
@@ -92,25 +92,25 @@
 
 ### Tests for User Story 2 (Test-First Development)
 
-- [ ] T036 [P] [US2] Write unit test for channel ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
-- [ ] T037 [P] [US2] Write unit test for channel metadata fetching in tests/unit/youtube/channel_test.go (MUST FAIL with mocked API)
-- [ ] T038 [P] [US2] Write unit test for pagination handling in tests/unit/youtube/channel_test.go (MUST FAIL)
-- [ ] T039 [US2] Write unit test for channel sync logic in tests/unit/sync/channel_sync_test.go (MUST FAIL)
-- [ ] T040 [US2] Write integration test for bulk channel sync in tests/integration/channel_sync_test.go (MUST FAIL)
+- [X] T036 [P] [US2] Write unit test for channel ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
+- [X] T037 [P] [US2] Write unit test for channel metadata fetching in tests/unit/youtube/channel_test.go (MUST FAIL with mocked API)
+- [X] T038 [P] [US2] Write unit test for pagination handling in tests/unit/youtube/channel_test.go (MUST FAIL)
+- [X] T039 [US2] Write unit test for channel sync logic in tests/unit/sync/channel_sync_test.go (MUST FAIL)
+- [X] T040 [US2] Write integration test for bulk channel sync in tests/integration/channel_sync_test.go (MUST FAIL)
 
 ### Implementation for User Story 2
 
-- [ ] T041 [P] [US2] Extend URL parser to handle channel URLs (various formats) in internal/parser/youtube_url.go
-- [ ] T042 [US2] Implement channel metadata fetcher (YouTube API channels.list) in internal/youtube/channel.go
-- [ ] T043 [US2] Implement channel video listing with pagination in internal/youtube/channel.go
-- [ ] T044 [US2] Implement channel sync logic (iterate videos, call video sync for each) in internal/sync/channel_sync.go
-- [ ] T045 [US2] Add progress tracking for bulk operations (current/total count) in internal/sync/channel_sync.go
-- [ ] T046 [US2] Implement "channel" CLI command with cobra in cmd/youtube-sync/main.go
-- [ ] T047 [US2] Add --limit, --since, --force flags to channel command
-- [ ] T048 [US2] Add progress bar/indicator for channel sync operations
-- [ ] T049 [US2] Add handling for unavailable videos (continue sync, don't fail) (FR-013)
-- [ ] T050 [US2] Add structured logging with summary (success/failed counts) for channel syncs
-- [ ] T051 [US2] Ensure channel info is logged but NOT stored in presenters table (FR-018, FR-020)
+- [X] T041 [P] [US2] Extend URL parser to handle channel URLs (various formats) in internal/parser/youtube_url.go
+- [X] T042 [US2] Implement channel metadata fetcher (YouTube API channels.list) in internal/youtube/channel.go
+- [X] T043 [US2] Implement channel video listing with pagination in internal/youtube/channel.go
+- [X] T044 [US2] Implement channel sync logic (iterate videos, call video sync for each) in internal/sync/channel_sync.go
+- [X] T045 [US2] Add progress tracking for bulk operations (current/total count) in internal/sync/channel_sync.go
+- [X] T046 [US2] Implement "channel" CLI command with cobra in cmd/youtube-sync/main.go
+- [X] T047 [US2] Add --limit, --since, --force flags to channel command
+- [X] T048 [US2] Add progress bar/indicator for channel sync operations
+- [X] T049 [US2] Add handling for unavailable videos (continue sync, don't fail) (FR-013)
+- [X] T050 [US2] Add structured logging with summary (success/failed counts) for channel syncs
+- [X] T051 [US2] Ensure channel info is logged but NOT stored in presenters table (FR-018, FR-020)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 **Manual Test**: Follow quickstart.md Test Case 2.1-2.5 to validate bulk channel sync
@@ -127,28 +127,28 @@
 
 ### Tests for User Story 4 (Test-First Development)
 
-- [ ] T052 [P] [US4] Write unit test for playlist ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
-- [ ] T053 [P] [US4] Write unit test for playlist metadata fetching in tests/unit/youtube/playlist_test.go (MUST FAIL with mocked API)
-- [ ] T054 [P] [US4] Write contract test for playlists table operations in tests/contract/schema_test.go (MUST FAIL)
-- [ ] T055 [P] [US4] Write contract test for playlist_items table operations in tests/contract/schema_test.go (MUST FAIL)
-- [ ] T056 [US4] Write unit test for playlist sync logic in tests/unit/sync/playlist_sync_test.go (MUST FAIL)
+- [X] T052 [P] [US4] Write unit test for playlist ID extraction from URLs in tests/unit/parser/youtube_url_test.go (MUST FAIL)
+- [X] T053 [P] [US4] Write unit test for playlist metadata fetching in tests/unit/youtube/playlist_test.go (MUST FAIL with mocked API)
+- [X] T054 [P] [US4] Write contract test for playlists table operations in tests/contract/schema_test.go (MUST FAIL)
+- [X] T055 [P] [US4] Write contract test for playlist_items table operations in tests/contract/schema_test.go (MUST FAIL)
+- [X] T056 [US4] Write unit test for playlist sync logic in tests/unit/sync/playlist_sync_test.go (MUST FAIL)
 - [ ] T057 [US4] Write integration test for end-to-end playlist sync in tests/integration/playlist_sync_test.go (MUST FAIL)
 
 ### Implementation for User Story 4
 
-- [ ] T058 [P] [US4] Extend URL parser to handle playlist URLs in internal/parser/youtube_url.go
-- [ ] T059 [P] [US4] Implement slug generation from playlist title in internal/parser/youtube_url.go
-- [ ] T060 [P] [US4] Implement playlists table operations (upsert) in internal/database/playlists.go
-- [ ] T061 [P] [US4] Implement playlist_items table operations (upsert with sort_order) in internal/database/playlist_items.go
-- [ ] T062 [US4] Implement playlist metadata fetcher in internal/youtube/playlist.go
-- [ ] T063 [US4] Implement playlist items fetcher with pagination in internal/youtube/playlist.go
-- [ ] T064 [US4] Implement playlist sync logic (playlist + videos + playlist_items) in internal/sync/playlist_sync.go
-- [ ] T065 [US4] Add database transaction handling for atomicity (playlist + items)
-- [ ] T066 [US4] Add ID lookup logic (playlist_id and episode_id FKs) in internal/sync/playlist_sync.go
-- [ ] T067 [US4] Implement "playlist" CLI command with cobra in cmd/youtube-sync/main.go
-- [ ] T068 [US4] Add --force flag to playlist command
-- [ ] T069 [US4] Add handling for duplicate videos in playlists (unique constraint)
-- [ ] T070 [US4] Add structured logging for playlist sync operations
+- [X] T058 [P] [US4] Extend URL parser to handle playlist URLs in internal/parser/youtube_url.go
+- [X] T059 [P] [US4] Implement slug generation from playlist title in internal/parser/youtube_url.go
+- [X] T060 [P] [US4] Implement playlists table operations (upsert) in internal/database/playlists.go
+- [X] T061 [P] [US4] Implement playlist_items table operations (upsert with sort_order) in internal/database/playlist_items.go
+- [X] T062 [US4] Implement playlist metadata fetcher in internal/youtube/playlist.go
+- [X] T063 [US4] Implement playlist items fetcher with pagination in internal/youtube/playlist.go
+- [X] T064 [US4] Implement playlist sync logic (playlist + videos + playlist_items) in internal/sync/playlist_sync.go
+- [X] T065 [US4] Add database transaction handling for atomicity (playlist + items)
+- [X] T066 [US4] Add ID lookup logic (playlist_id and episode_id FKs) in internal/sync/playlist_sync.go
+- [X] T067 [US4] Implement "playlist" CLI command with cobra in cmd/youtube-sync/main.go
+- [X] T068 [US4] Add --force flag to playlist command
+- [X] T069 [US4] Add handling for duplicate videos in playlists (unique constraint)
+- [X] T070 [US4] Add structured logging for playlist sync operations
 
 **Checkpoint**: Playlist sync should work independently
 **Manual Test**: Follow quickstart.md Test Case 3.1-3.3 to validate playlist sync
@@ -163,20 +163,20 @@
 
 ### Tests for User Story 3 (Test-First Development)
 
-- [ ] T071 [P] [US3] Write unit test for cron schedule parsing in tests/unit/sync/scheduler_test.go (MUST FAIL)
-- [ ] T072 [P] [US3] Write unit test for scheduled job tracking in tests/unit/sync/scheduler_test.go (MUST FAIL)
-- [ ] T073 [US3] Write integration test for scheduled sync execution in tests/integration/scheduler_test.go (MUST FAIL)
+- [X] T071 [P] [US3] Write unit test for cron schedule parsing in tests/unit/sync/scheduler_test.go (MUST FAIL)
+- [X] T072 [P] [US3] Write unit test for scheduled job tracking in tests/unit/sync/scheduler_test.go (MUST FAIL)
+- [X] T073 [US3] Write integration test for scheduled sync execution in tests/integration/scheduler_test.go (MUST FAIL)
 
 ### Implementation for User Story 3
 
-- [ ] T074 [US3] Implement scheduler with cron library in internal/sync/scheduler.go
-- [ ] T075 [US3] Add configuration for scheduled jobs (cron expressions) in pkg/config/config.go
-- [ ] T076 [US3] Implement scheduled job registry (track which channels/playlists to sync)
+- [X] T074 [US3] Implement scheduler with cron library in internal/sync/scheduler.go
+- [X] T075 [US3] Add configuration for scheduled jobs (cron expressions) in pkg/config/config.go
+- [X] T076 [US3] Implement scheduled job registry (track which channels/playlists to sync)
 - [ ] T077 [US3] Implement "schedule" CLI subcommands (add, list, remove, start, stop) in cmd/youtube-sync/main.go
 - [ ] T078 [US3] Add daemon mode for running scheduler continuously
-- [ ] T079 [US3] Add structured logging for scheduled sync results (success/failure counts, timestamps)
+- [X] T079 [US3] Add structured logging for scheduled sync results (success/failure counts, timestamps)
 - [ ] T080 [US3] Add file-based error logging for failed scheduled syncs (FR-010, US3 Scenario 3)
-- [ ] T081 [US3] Add graceful shutdown handling for scheduler daemon
+- [X] T081 [US3] Add graceful shutdown handling for scheduler daemon
 
 **Checkpoint**: All user stories should now be independently functional
 **Manual Test**: Follow quickstart.md Scenario 3 to validate scheduled syncs
