@@ -33,12 +33,12 @@ help:
 # Build targets
 build:
 	@echo "Building youtube-sync..."
-	go build -o youtube-sync cmd/youtube-sync/main.go
+	go build -o youtube-sync cmd/youtube-sync/*.go
 	@echo "✓ Build complete: ./youtube-sync"
 
 install:
 	@echo "Installing youtube-sync to GOPATH/bin..."
-	go install cmd/youtube-sync/main.go
+	go install cmd/youtube-sync/*.go
 	@echo "✓ Installed"
 
 clean:

@@ -35,16 +35,13 @@ type PlaylistItem struct {
 // UpsertPlaylist inserts or updates a playlist in the database
 func (c *Client) UpsertPlaylist(ctx context.Context, playlist *Playlist) error {
 	query := `
-		INSERT INTO playlists (playlist_id, title, description, slug, image1, image2, image3, active, created_at, updated_at)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+		INSERT INTO playlists (playlist_id, name, description, slug, active, created_at, updated_at)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
 		ON CONFLICT (playlist_id)
 		DO UPDATE SET
-			title = EXCLUDED.title,
+			name = EXCLUDED.name,
 			description = EXCLUDED.description,
 			slug = EXCLUDED.slug,
-			image1 = EXCLUDED.image1,
-			image2 = EXCLUDED.image2,
-			image3 = EXCLUDED.image3,
 			active = EXCLUDED.active,
 			updated_at = EXCLUDED.updated_at
 		RETURNING id, created_at, updated_at
@@ -58,9 +55,6 @@ func (c *Client) UpsertPlaylist(ctx context.Context, playlist *Playlist) error {
 		playlist.Title,
 		playlist.Description,
 		playlist.Slug,
-		playlist.Image1,
-		playlist.Image2,
-		playlist.Image3,
 		playlist.Active,
 		now,
 		now,
@@ -76,7 +70,7 @@ func (c *Client) UpsertPlaylist(ctx context.Context, playlist *Playlist) error {
 // GetPlaylistByPlaylistID retrieves a playlist by its YouTube playlist ID
 func (c *Client) GetPlaylistByPlaylistID(ctx context.Context, playlistID string) (*Playlist, error) {
 	query := `
-		SELECT id, playlist_id, title, description, slug, image1, image2, image3, active, created_at, updated_at
+		SELECT id, playlist_id, name, description, slug, active, created_at, updated_at
 		FROM playlists
 		WHERE playlist_id = $1
 	`
@@ -88,9 +82,6 @@ func (c *Client) GetPlaylistByPlaylistID(ctx context.Context, playlistID string)
 		&playlist.Title,
 		&playlist.Description,
 		&playlist.Slug,
-		&playlist.Image1,
-		&playlist.Image2,
-		&playlist.Image3,
 		&playlist.Active,
 		&playlist.CreatedAt,
 		&playlist.UpdatedAt,
